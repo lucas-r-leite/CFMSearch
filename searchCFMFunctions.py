@@ -1,5 +1,7 @@
 import requests
-def getListaMedicos(page = 1):
+
+
+def getListaMedicos(page=1):
     url = "https://portal.cfm.org.br/api_rest_php/api/v1/medicos/buscar_medicos"
 
     payload = [
@@ -34,19 +36,14 @@ def getListaMedicos(page = 1):
 
     response = requests.request("POST", url, json=payload, headers=headers)
 
-    #print(response.text)
+    # print(response.text)
     return response
+
 
 def getDoctorInfos(crm, hash):
     url = "https://portal.cfm.org.br/api_rest_php/api/v1/medicos/buscar_foto"
 
-    payload = [
-        {
-            "securityHash": "7f8f562649260bdf57d1e17dda6d8259",
-            "crm": "4184",
-            "uf": "PB"
-        }
-    ]
+    payload = [{"securityHash": hash, "crm": crm, "uf": "PB"}]
     headers = {
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0",
@@ -61,9 +58,10 @@ def getDoctorInfos(crm, hash):
         "Cookie": "__utmpk=0",
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "cors",
-        "Sec-Fetch-Site": "same-origin"
+        "Sec-Fetch-Site": "same-origin",
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
 
-    print(response.text)
+    return response
+
