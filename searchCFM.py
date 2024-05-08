@@ -8,7 +8,6 @@ doctors = []
 errors = []  # List to store error messages
 # Parse the JSON string
 data = json.loads(getListaMedicos().text)
-
 # Extract the first "COUNT" value
 count = int(data["dados"][0]["COUNT"])
 
@@ -17,7 +16,7 @@ count = math.ceil(count / 10)
 # Loop through the pages
 for page in range(1, count + 1):  # substitute 3 by count + 1
     data = json.loads(getListaMedicos(page).text)
-    for medico in range(0, 10):
+    for medico in range(0, len(data["dados"])):
         crm = data["dados"][medico]["NU_CRM"]
         hash = data["dados"][medico]["SECURITYHASH"]
         try:
