@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def getListaMedicos(page=1):
@@ -7,7 +11,7 @@ def getListaMedicos(page=1):
     payload = [
         {
             "useCaptchav2": True,
-            "captcha": "03AFcWeA5iqADGa_MK2IAysNo931TsGmxrsSA3TH_Vx-7YgNqbu9dPQSxR7bdhY_59NW18bSfr0WHOnwPQSf0rx0nW0iBVugKZGcLq3gXijVZcMwX9ZwFuIuAonVRMSpcwIri3Sd0uqZ8jjI-WVd9L-KG7Edz1ermt01ipMO_l8fsOF6l_H0j8xyasK84Idy_tknq7BQZ-So8JDy4Gn4BMMPIpvz6Izqlc0Mx8fGv74wP5qh_yE61H9sLXh154dqCovs3Pk2zxfkFlrrnYiU7jWKoDRpLwIEHgLg1gMlwZw3UJAvNb4ng_JQ6PWnem2iGgEVmLAuUhfC9a1OMYdNYbS2ilXwzO2Aw23oMHTxp88BHw5Wdj8gadJmUd0RPnXPmDfNlni5qmVfTD5G5XQEf_XpmEvf5nTiJyWebA5ih8D6SXbomMSUbulqTaMTllobNI7uvq1vXo5bg7gr2lA74UnE-YcTuleiCRBn95RTf-nekofdmKkQFaEG9VJAfPJ-Fq6IYSqX_PQNw_h-QIXTQUop5Z7_z2hR3T_w0eZkODfca9rvnnCm7WR9J1puHm2rJwlD0Gp2qNCLB1SgAQR5n3Y7me7ylPmTxGfx3tsPgQZA9gt7bgUefBfz17QoXNVYZ9RasMS_aVymG7RCryltbF8PoeS3t3bei5WmP1lfdaohEu0ZILU5InIJyXsjHVnIo_74adVFBqGVaIFMx49jYyVhUgfv6VABYzkQ",
+            "captcha": os.getenv("CAPTCHA"),
             "medico": {
                 "nome": "",
                 "ufMedico": "PB",
@@ -64,4 +68,3 @@ def getDoctorInfos(crm, hash):
     response = requests.request("POST", url, json=payload, headers=headers)
 
     return response
-
