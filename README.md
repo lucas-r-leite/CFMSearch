@@ -18,7 +18,7 @@ This repository contains Python code for fetching and processing data about doct
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/your_username/your_repository.git
+    git clone https://github.com/lucas-r-leite/CFMSearch.git
     ```
 
 2. Navigate to the cloned directory:
